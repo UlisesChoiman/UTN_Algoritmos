@@ -152,3 +152,38 @@ print("Lista de vehículos:")
 for auto in vehiculo.autos:
     print(f"{auto['marca']} {auto['modelo']}, Patente: {auto['patente']}, Color: {auto['color']}")
 
+
+
+#6
+
+class Empleado:
+    def __init__(self, nombre, horas_trabajadas, tarifa_hora):
+        self.nombre = nombre
+        self.horas_trabajadas = horas_trabajadas
+        self.tarifa_hora = tarifa_hora
+        self.empleado = []
+
+    def calcular_salario(self):
+        return self.horas_trabajadas * self.tarifa_hora
+
+    def agregar_empleado(self):
+        self.empleado.append({
+            "nombre": self.nombre,
+            "horas_trabajadas": self.horas_trabajadas,
+            "tarifa_hora": self.tarifa_hora,
+            "salario": self.calcular_salario()
+        })
+        print(f"Empleado agregado: {self.nombre}, Salario: {self.calcular_salario()}")
+
+if __name__ == "__main__":
+   n = int(input("Ingrese la cantidad de empleados a agregar: "))
+   for i in range(n):
+       nombre = input("Ingrese el nombre del empleado: ")
+       horas_trabajadas = float(input("Ingrese las horas trabajadas: "))
+       tarifa_hora = float(input("Ingrese la tarifa por hora: "))
+       empleado = Empleado(nombre, horas_trabajadas, tarifa_hora)
+       empleado.agregar_empleado()
+
+print("Lista de empleados:")
+for emp in empleado.empleado:
+    print(f"{emp['nombre']}, Horas trabajadas: {emp['horas_trabajadas']}, Tarifa por hora: {emp['tarifa_hora']}, Salario: {emp['salario']}")
