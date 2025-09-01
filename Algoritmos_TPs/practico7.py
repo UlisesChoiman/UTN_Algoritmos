@@ -118,3 +118,37 @@ if __name__ == "__main__":
     print(f"Densidad: {planeta2.densidad()} kg/km³")
     print(f"¿Es un planeta exterior? {'Sí' if planeta2.planeta_exterior() else 'No'}")
 
+
+#5
+
+class Vehiculo:
+    def __init__(self, marca, modelo, patente, color):
+        self.marca = marca
+        self.modelo = modelo
+        self.patente = patente
+        self.color = color
+        self.autos = []
+
+    def add_auto(self):
+        self.autos.append({
+            "marca": self.marca,
+            "modelo": self.modelo,
+            "patente": self.patente,
+            "color": self.color
+        })
+        print(f"Vehículo agregado: {self.marca} {self.modelo}, Patente: {self.patente}, Color: {self.color}")
+
+
+if __name__ == "__main__":
+   for i in range(3):
+       marca = input("Ingrese la marca del vehículo: ")
+       modelo = input("Ingrese el modelo del vehículo: ")
+       patente = input("Ingrese la patente del vehículo: ")
+       color = input("Ingrese el color del vehículo: ")
+       vehiculo = Vehiculo(marca, modelo, patente, color)
+       vehiculo.add_auto()
+
+print("Lista de vehículos:")
+for auto in vehiculo.autos:
+    print(f"{auto['marca']} {auto['modelo']}, Patente: {auto['patente']}, Color: {auto['color']}")
+
