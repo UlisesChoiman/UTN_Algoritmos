@@ -79,3 +79,42 @@ if __name__ == "__main__":
     print(f"¿Es mayor de edad? {'Sí' if p1.es_mayor_de_edad() else 'No'}")
     print(f"¿Es mayor de edad? {'Sí' if p2.es_mayor_de_edad() else 'No'}")
 
+
+
+#4
+
+class Planeta: 
+    def __init__(self, name = None, cant_satelites = 0, mass = 0, volume = 0, diametro = 0, distancia_sol = 0, tipo_planeta = None, observable = False):
+        self.name = name
+        self.cant_satelites = cant_satelites
+        self.mass = mass
+        self.volume = volume
+        self.diametro = diametro
+        self.distancia_sol = distancia_sol
+        self.tipo_planeta = tipo_planeta
+        self.observable = observable
+
+    def __str__(self):
+        return (f"Planeta: {self.name}, Cantidad de satelites: {self.cant_satelites}, "
+                f"Masa: {self.mass} kg, Volumen: {self.volume} km³, Diametro: {self.diametro} km, "
+                f"Distancia al sol: {self.distancia_sol} km, Tipo de planeta: {self.tipo_planeta}, "
+                f"Observable a simple vista: {self.observable}")
+
+    def densidad(self):
+        return self.mass / self.volume if self.volume != 0 else 0
+
+    def planeta_exterior(self):
+        UA = 1.496e+11
+        return self.tipo_planeta == "Exterior" if self.distancia_sol > 2.1 * UA and self.distancia_sol < 3.4 * UA else False
+    
+if __name__ == "__main__":
+    planeta1 = Planeta("Tierra", 1, 5.972e24, 1.08321e12, 12742, 1.496e90, "Terrestre", True)
+    planeta2 = Planeta("Júpiter2", 79, 1.898e27, 1.43128e15, 139820, 7.785e11, "Exterior", False)
+    print(planeta1)
+    print(f"Densidad: {planeta1.densidad()} kg/km³")
+    print(f"¿Es un planeta exterior? {'Sí' if planeta1.planeta_exterior() else 'No'}")
+    print()
+    print(planeta2)
+    print(f"Densidad: {planeta2.densidad()} kg/km³")
+    print(f"¿Es un planeta exterior? {'Sí' if planeta2.planeta_exterior() else 'No'}")
+
