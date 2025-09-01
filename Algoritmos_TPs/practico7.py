@@ -53,3 +53,29 @@ if __name__ == "__main__":
         print(f"Área: {t.area():.2f}")
         print(f"Forma: {t.forma()}")
 
+
+#3
+
+class Persona:
+
+        def __init__(self, name="", surname="", age=0, DNI=""):
+            self.name = name
+            self.surname = surname
+            self.age = age
+            self.DNI = DNI
+
+        def mostrar(self):
+            print(f"Nombre: {self.name} {self.surname}, Edad: {self.age}, DNI: {self.DNI}")
+
+        def es_mayor_de_edad(self):
+            return True if self.age >= 18 else False
+        
+
+if __name__ == "__main__":
+    p1 = Persona("Juan", "Pérez", 20, "12345678A")
+    p2 = Persona("Ana", "Gómez", 16, "87654321B")
+    p1.mostrar()
+    p2.mostrar()
+    print(f"¿Es mayor de edad? {'Sí' if p1.es_mayor_de_edad() else 'No'}")
+    print(f"¿Es mayor de edad? {'Sí' if p2.es_mayor_de_edad() else 'No'}")
+
