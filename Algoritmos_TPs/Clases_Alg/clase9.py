@@ -24,10 +24,10 @@ class Person:
     
 persona_1 = Person("jose", 40)
 
-persona_1.age = -23
-persona_1.height = 1,90
-print(persona_1.age)
-print(persona_1.height)
+#persona_1.age = -23
+#persona_1.height = 1,90
+#print(persona_1.age)
+#print(persona_1.height)
 
 #modificadores de acceso
 #public in age ---> age = 20
@@ -38,3 +38,24 @@ print(persona_1.height)
 
 #get optenemos (retornamo) el valor del atributo
 #set setiamos (asignamos) el valor del atributo
+
+#Herencia ---> Permite heredar atributos a metodos
+
+class Animal:
+    def __init__(self, pelo, numero_de_patas, edad ):
+        self.pelo = pelo
+        self.numero_de_patas = numero_de_patas
+        self.edad = edad
+    
+    def caminar(self):
+        print("Animal caminando")
+
+    def sonido(self):
+        print("Animal haciendo sonido de animal")
+
+class Gato(Animal):
+    pass
+
+gato_1 = Gato("corto", 4, 30)
+
+print(gato_1.pelo)
