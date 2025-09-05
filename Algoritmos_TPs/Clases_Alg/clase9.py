@@ -59,3 +59,11 @@ class Gato(Animal):
 gato_1 = Gato("corto", 4, 30)
 
 print(gato_1.pelo)
+
+
+class Gato(Animal):
+    def __init__(self, name, pelo, numero_de_patas, edad):
+        super().__init__(pelo, numero_de_patas, edad)
+        self.name = name
+
+    
