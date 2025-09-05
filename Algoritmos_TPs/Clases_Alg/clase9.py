@@ -14,8 +14,11 @@ class Person:
     def get_age(self):
         return self.__age
     
-    def set_age(self):
-        return self.__age
+    def set_age(self, age):
+        if age > 0:
+            self.__age
+        else:
+            return "Debe ingresar una edad valida"
     
 persona_1 = Person("jose", 40)
 
