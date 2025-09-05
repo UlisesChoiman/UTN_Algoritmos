@@ -66,5 +66,9 @@ class Gato(Animal):
         super().__init__(pelo, numero_de_patas, edad)
         self.name = name
 
+    def sonido(self):
+        super().sonido()
+        print("MIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIAAAAAAAAAAAAUUUUUUUUUUUU")
+
 gato_1 = Gato("corto", 4, 7, "lanita")
-print(gato_1.pelo)
+print(gato_1.sonido())
