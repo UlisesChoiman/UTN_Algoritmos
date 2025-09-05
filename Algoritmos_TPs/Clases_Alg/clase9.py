@@ -53,12 +53,12 @@ class Animal:
     def sonido(self):
         print("Animal haciendo sonido de animal")
 
-class Gato(Animal):
-    pass
+#class Gato(Animal):
+#    pass
 
-gato_1 = Gato("corto", 4, 30)
+#gato_1 = Gato("corto", 4, 30)
 
-print(gato_1.pelo)
+#print(gato_1.pelo)
 
 
 class Gato(Animal):
@@ -66,4 +66,5 @@ class Gato(Animal):
         super().__init__(pelo, numero_de_patas, edad)
         self.name = name
 
-    
+gato_1 = Gato("corto", 4, 7, "lanita")
+print(gato_1.pelo)
