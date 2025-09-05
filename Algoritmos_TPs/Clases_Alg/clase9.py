@@ -1,4 +1,6 @@
 
+# metodos por convencion para acceder a atributos privados getter y setter
+
 class Person:
     __slots__ = "__name", "__age"
     def __init__(self, name, age):
@@ -33,3 +35,6 @@ print(persona_1.height)
 # Public ---> Se puede acceder desde cualquier lado self.name.
 # Private ----> Solo puede acceder la propia calse sel.__name
 # Protected ----> Propiac clase y clases heredadas self._name
+
+#get optenemos (retornamo) el valor del atributo
+#set setiamos (asignamos) el valor del atributo
