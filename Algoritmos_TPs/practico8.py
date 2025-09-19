@@ -1,49 +1,75 @@
+class Pila:
+    def __init__(self):
+        self.items = []
+
+    def esta_vacia(self):
+        return len(self.items) == 0
+
+    def apilar(self, item):
+        self.items.append(item)
+
+    def desapilar(self):
+        return self.items.pop()
+
+    def ver_tope(self):
+            return self.items[-1]
+
+    def tamano(self):
+        return len(self.items)
+
+    def mostrar(self):
+        return self.items
+
 #1
 
-pila = []
-pila.append(1)
-pila.append(2)
-pila.append(3)
+pila = Pila()
+pila.apilar(1)
+pila.apilar(2)
+pila.apilar(3)
 
-print("Pila original:", pila)
+print("Pila original:", pila.mostrar())
 
 # Invertir la pila
-pila_invertida = []
-while pila:
-    pila_invertida.append(pila.pop())
+pila_invertida = Pila()
+while not pila.esta_vacia():
+    pila_invertida.apilar(pila.desapilar())
 
-print("Pila invertida:", pila_invertida)
+print("Pila invertida:", pila_invertida.mostrar())
 
 
 #2
-pila = []
-pila.append("h")
-pila.append("o")
-pila.append("l")
-pila.append("a")
-print("Pila original:", pila)
+pila = Pila()
+pila.apilar("h")
+pila.apilar("o")
+pila.apilar("l")
+pila.apilar("a")
+print("Pila original:", pila.mostrar())
 
-pila_invertida = [] 
-while pila: 
-    pila_invertida.append(pila.pop())
+pila_invertida = Pila()
+while not pila.esta_vacia():
+    pila_invertida.apilar(pila.desapilar())
 
-print("Pila invertida:", pila_invertida) 
+print("Pila invertida:", pila_invertida.mostrar())
 
 
 #3
 
-pila = []
-pila_invertida = []
-
 palabra = input("Ingrese una palabra para verificar si es palíndromo: ")
+pila = Pila()
+pila_invertida = Pila()
+
 for letra in palabra:
-    pila.append(letra)
+    pila.apilar(letra)
 
-temp_pila = pila.copy()
-while temp_pila:
-    pila_invertida.append(temp_pila.pop())
 
-if pila == pila_invertida:
+temp_pila = Pila()
+while not pila.esta_vacia():
+    temp_pila.apilar(pila.desapilar())
+
+while not temp_pila.esta_vacia():
+    pila_invertida.apilar(temp_pila.desapilar())
+
+if list(palabra) == pila_invertida.mostrar():
     print(f"La palabra '{palabra}' es un palíndromo.")
 else:
     print(f"La palabra '{palabra}' no es un palíndromo.")
@@ -51,12 +77,16 @@ else:
 
 #4
 
-pila = ["des1", "des2", "des3", "des4", "des5"]
-print("Camino de ida:", pila)
+pueblos = ["A", "B", "C", "D", "E"] 
 
-camino_vuelta = []
-temp_pila = pila.copy()
-while temp_pila:
-    camino_vuelta.append(temp_pila.pop())
+camino_ida = Pila()
+for pueblo in pueblos:
+    camino_ida.apilar(pueblo)
 
-print("Camino de vuelta:", camino_vuelta)
+print("Camino de ida:", camino_ida.mostrar())
+
+camino_vuelta = Pila()
+while not camino_ida.esta_vacia():
+    camino_vuelta.apilar(camino_ida.desapilar())
+
+print("Camino de vuelta:", camino_vuelta.mostrar())
