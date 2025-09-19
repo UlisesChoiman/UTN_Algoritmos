@@ -47,3 +47,16 @@ if pila == pila_invertida:
     print(f"La palabra '{palabra}' es un palíndromo.")
 else:
     print(f"La palabra '{palabra}' no es un palíndromo.")
+
+
+#4
+
+pila = ["des1", "des2", "des3", "des4", "des5"]
+print("Camino de ida:", pila)
+
+camino_vuelta = []
+temp_pila = pila.copy()
+while temp_pila:
+    camino_vuelta.append(temp_pila.pop())
+
+print("Camino de vuelta:", camino_vuelta)
