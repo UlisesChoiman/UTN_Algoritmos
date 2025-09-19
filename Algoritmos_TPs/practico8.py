@@ -169,3 +169,13 @@ try:
     print("Archivo invertido.txt generado correctamente.")
 except FileNotFoundError:
     print("El archivo especificado no existe.")
+
+
+#8
+
+def invertir_palabra_de_frase(frase):
+    palabras = frase.split()
+    frase_invertida = " ".join(reversed(palabras))
+    return frase_invertida
+frase = input("Ingrese una frase para invertir: ")
+print("Frase invertida:", invertir_palabra_de_frase(frase))
