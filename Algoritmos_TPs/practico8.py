@@ -205,10 +205,7 @@ class SalaEspera:
                 cantidad_obra_social += 1
         print(f"Cantidad de pacientes con obra social: {cantidad_obra_social}")
 
-# Ejemplo de uso:
 sala = SalaEspera()
-
-
 
 sala.agregar_paciente(Paciente("Ana", True))
 sala.agregar_paciente(Paciente("Luis", False))
@@ -218,3 +215,46 @@ sala.agregar_paciente(Paciente("Sofía", True))
 
 print("Cola de espera:", sala.pacientes)
 sala.atender_pacientes()
+
+
+#10
+class Carta:
+    def __init__(self, nombre):
+        self.nombre = nombre
+
+class Persona:
+    def __init__(self, nombre, cartas):
+        self.nombre = nombre
+        self.cartas = cartas
+
+class Correo:
+    def __init__(self, max_cartas_por_persona=5):
+        self.max_cartas_por_persona = max_cartas_por_persona
+        self.cola = []
+
+    def agregar_persona(self, persona):
+        self.cola.append(persona)
+
+    def atender_persona(self):
+        if self.cola:
+            persona = self.cola.pop(0)
+            cartas_a_recibir = persona.cartas[:self.max_cartas_por_persona]
+            cartas_restantes = persona.cartas[self.max_cartas_por_persona:]
+            print(f"Atendiendo a {persona.nombre}:")
+            for carta in cartas_a_recibir:
+                print(f"  Recibida {carta.nombre}")
+            if cartas_restantes:
+                print(f"{persona.nombre} debe volver a la cola con {len(cartas_restantes)} carta(s) restante(s).")
+                self.agregar_persona(Persona(persona.nombre, cartas_restantes))
+        else:
+            print("No hay personas en la cola.")
+
+
+correo = Correo(max_cartas_por_persona=3) 
+
+correo.agregar_persona(Persona("Ana", [Carta(f"Carta {i+1}") for i in range(2)]))
+correo.agregar_persona(Persona("Luis", [Carta(f"Carta {i+1}") for i in range(5)]))
+correo.agregar_persona(Persona("Maria", [Carta(f"Carta {i+1}") for i in range(4)]))
+
+while correo.cola:
+    correo.atender_persona()
