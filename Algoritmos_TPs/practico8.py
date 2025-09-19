@@ -153,3 +153,19 @@ print("Contenedores apilados:", almacen.pila.mostrar())
 
 almacen.pop(103)
 print("Contenedores después de retirar 103:", almacen.pila.mostrar())
+
+
+#7
+
+nombre_archivo = input("Ingrese el nombre del archivo de texto a invertir: ")
+
+try:
+    with open(nombre_archivo, "r", encoding="utf-8") as archivo:
+        lineas = archivo.readlines()
+
+    with open("invertido.txt", "w", encoding="utf-8") as archivo_invertido:
+        for linea in reversed(lineas):
+            archivo_invertido.write(linea)
+    print("Archivo invertido.txt generado correctamente.")
+except FileNotFoundError:
+    print("El archivo especificado no existe.")
