@@ -20,8 +20,8 @@ class Pila:
     def mostrar(self):
         return self.items
 
-#1
 
+#1
 pila = Pila()
 pila.apilar(1)
 pila.apilar(2)
@@ -53,7 +53,6 @@ print("Pila invertida:", pila_invertida.mostrar())
 
 
 #3
-
 palabra = input("Ingrese una palabra para verificar si es palíndromo: ")
 pila = Pila()
 pila_invertida = Pila()
@@ -76,7 +75,6 @@ else:
 
 
 #4
-
 pueblos = ["A", "B", "C", "D", "E"] 
 
 camino_ida = Pila()
@@ -114,8 +112,8 @@ elif not pila.esta_vacia():
 else:
     print("Los paréntesis están correctamente balanceados.")
 
-#6
 
+#6
 class Almacen:
     def __init__(self, capacidad):
         self.capacidad = capacidad
@@ -142,7 +140,6 @@ class Almacen:
         while not temp.esta_vacia():
             self.pila.apilar(temp.desapilar())
 
-# Ejemplo de uso:
 almacen = Almacen(5)
 almacen.push(101)
 almacen.push(102)
@@ -156,7 +153,6 @@ print("Contenedores después de retirar 103:", almacen.pila.mostrar())
 
 
 #7
-
 nombre_archivo = input("Ingrese el nombre del archivo de texto a invertir: ")
 
 try:
@@ -172,13 +168,13 @@ except FileNotFoundError:
 
 
 #8
-
 def invertir_palabra_de_frase(frase):
     palabras = frase.split()
     frase_invertida = " ".join(reversed(palabras))
     return frase_invertida
 frase = input("Ingrese una frase para invertir: ")
 print("Frase invertida:", invertir_palabra_de_frase(frase))
+
 
 #9
 class Paciente:
@@ -258,3 +254,18 @@ correo.agregar_persona(Persona("Maria", [Carta(f"Carta {i+1}") for i in range(4)
 
 while correo.cola:
     correo.atender_persona()
+
+#11
+def simular_cola_impresion(jobs):
+    cola = jobs.copy()
+    while cola:
+        trabajo = cola.pop(0)
+        print(f"Imprimiendo '{trabajo['documento']}' ({trabajo['paginas']} paginas)")
+
+trabajos = [
+    {'documento': 'Informe.pdf', 'paginas': 10},
+    {'documento': 'Factura.docx', 'paginas': 2},
+    {'documento': 'Presentacion.pptx', 'paginas': 15}
+]
+
+simular_cola_impresion(trabajos)
