@@ -90,3 +90,26 @@ while not camino_ida.esta_vacia():
     camino_vuelta.apilar(camino_ida.desapilar())
 
 print("Camino de vuelta:", camino_vuelta.mostrar())
+
+#5
+
+cadena = input("Ingrese una cadena para verificar el balance de paréntesis: ")
+pila = Pila()
+error = None
+
+for i, simbolo in enumerate(cadena):
+    if simbolo == '(':
+        pila.apilar(i)
+    elif simbolo == ')':
+        if pila.esta_vacia():
+            error = f"Error en la posición {i}: falta '(' antes de ')'"
+            break
+        else:
+            pila.desapilar()
+
+if error:
+    print(error)
+elif not pila.esta_vacia():
+    print(f"Error: falta ')' para el/los '(' en las posiciones {pila.mostrar()}")
+else:
+    print("Los paréntesis están correctamente balanceados.")
