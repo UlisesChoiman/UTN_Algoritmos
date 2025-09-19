@@ -179,3 +179,42 @@ def invertir_palabra_de_frase(frase):
     return frase_invertida
 frase = input("Ingrese una frase para invertir: ")
 print("Frase invertida:", invertir_palabra_de_frase(frase))
+
+#9
+class Paciente:
+    def __init__(self, nombre, tiene_obra_social):
+        self.nombre = nombre
+        self.tiene_obra_social = tiene_obra_social
+
+    def __repr__(self):
+        return f"{self.nombre} ({'Obra social' if self.tiene_obra_social else 'Sin obra social'})"
+
+class SalaEspera:
+    def __init__(self):
+        self.pacientes = []
+
+    def agregar_paciente(self, paciente):
+        self.pacientes.append(paciente)
+
+    def atender_pacientes(self):
+        cantidad_obra_social = 0
+        while self.pacientes:
+            paciente = self.pacientes.pop(0)
+            print(f"Atendiendo a: {paciente.nombre}")
+            if paciente.tiene_obra_social:
+                cantidad_obra_social += 1
+        print(f"Cantidad de pacientes con obra social: {cantidad_obra_social}")
+
+# Ejemplo de uso:
+sala = SalaEspera()
+
+
+
+sala.agregar_paciente(Paciente("Ana", True))
+sala.agregar_paciente(Paciente("Luis", False))
+sala.agregar_paciente(Paciente("María", True))
+sala.agregar_paciente(Paciente("Pedro", False))
+sala.agregar_paciente(Paciente("Sofía", True))
+
+print("Cola de espera:", sala.pacientes)
+sala.atender_pacientes()
