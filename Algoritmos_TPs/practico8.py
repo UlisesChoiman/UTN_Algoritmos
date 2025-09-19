@@ -91,8 +91,8 @@ while not camino_ida.esta_vacia():
 
 print("Camino de vuelta:", camino_vuelta.mostrar())
 
-#5
 
+#5
 cadena = input("Ingrese una cadena para verificar el balance de paréntesis: ")
 pila = Pila()
 error = None
@@ -113,3 +113,43 @@ elif not pila.esta_vacia():
     print(f"Error: falta ')' para el/los '(' en las posiciones {pila.mostrar()}")
 else:
     print("Los paréntesis están correctamente balanceados.")
+
+#6
+
+class Almacen:
+    def __init__(self, capacidad):
+        self.capacidad = capacidad
+        self.pila = Pila()
+
+    def push(self, id_contenedor):
+        if self.pila.tamano() < self.capacidad:
+            self.pila.apilar(id_contenedor)
+        else:
+            print("Almacén lleno. No se puede apilar más contenedores.")
+
+    def pop(self, id_contenedor):
+        temp = Pila()
+        encontrado = False
+        while not self.pila.esta_vacia():
+            actual = self.pila.desapilar()
+            if actual == id_contenedor:
+                encontrado = True
+                break
+            else:
+                temp.apilar(actual)
+        if not encontrado:
+            print(f"Contenedor {id_contenedor} no encontrado.")
+        while not temp.esta_vacia():
+            self.pila.apilar(temp.desapilar())
+
+# Ejemplo de uso:
+almacen = Almacen(5)
+almacen.push(101)
+almacen.push(102)
+almacen.push(103)
+almacen.push(104)
+almacen.push(105)
+print("Contenedores apilados:", almacen.pila.mostrar())
+
+almacen.pop(103)
+print("Contenedores después de retirar 103:", almacen.pila.mostrar())
