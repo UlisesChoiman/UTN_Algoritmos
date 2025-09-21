@@ -153,18 +153,29 @@ print("Contenedores después de retirar 103:", almacen.pila.mostrar())
 
 
 #7
-nombre_archivo = input("Ingrese el nombre del archivo de texto a invertir: ")
+def invertir_lineas_archivo(nombre_archivo_entrada, nombre_archivo_salida="invertido.txt"):
+    
+    try:
+        # Leer todas las líneas del archivo original
+        with open(nombre_archivo_entrada, 'r', encoding='utf-8') as archivo:
+            lineas = archivo.readlines()
+        
+        lineas_invertidas = lineas[::-1]
+        
+        with open(nombre_archivo_salida, 'w', encoding='utf-8') as archivo_salida:
+            archivo_salida.writelines(lineas_invertidas)
+        
+        print(f"Archivo '{nombre_archivo_salida}' creado exitosamente!")
+        print(f"Se procesaron {len(lineas)} lineas.")
+        
+    except FileNotFoundError:
+        print(f"Error: No se encontro el archivo '{nombre_archivo_entrada}'")
+    except Exception as e:
+        print(f"Error inesperado: {e}")
 
-try:
-    with open(nombre_archivo, "r", encoding="utf-8") as archivo:
-        lineas = archivo.readlines()
-
-    with open("invertido.txt", "w", encoding="utf-8") as archivo_invertido:
-        for linea in reversed(lineas):
-            archivo_invertido.write(linea)
-    print("Archivo invertido.txt generado correctamente.")
-except FileNotFoundError:
-    print("El archivo especificado no existe.")
+if __name__ == "__main__":
+    nombre_archivo = input("Ingrese el nombre del archivo a invertir (con extension): ")
+    invertir_lineas_archivo(nombre_archivo)
 
 
 #8
@@ -246,7 +257,7 @@ class Correo:
             print("No hay personas en la cola.")
 
 
-correo = Correo(max_cartas_por_persona=3) 
+correo = Correo(max_cartas_por_persona=5) 
 
 correo.agregar_persona(Persona("Ana", [Carta(f"Carta {i+1}") for i in range(2)]))
 correo.agregar_persona(Persona("Luis", [Carta(f"Carta {i+1}") for i in range(5)]))
