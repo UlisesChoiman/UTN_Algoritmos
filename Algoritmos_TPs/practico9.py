@@ -191,3 +191,34 @@ while actual:
     print(actual.dato, end=" ")
     actual = actual.siguiente
 print()
+
+
+#Ej 7
+
+def contar_apariciones(s, a):
+    contador = 0
+    actual = s
+    while actual:
+        if actual.dato == a:
+            contador += 1
+        actual = actual.siguiente
+    return contador
+
+nodo10 = Nodo(2)
+nodo11 = Nodo(2)
+nodo12 = Nodo(2)
+nodo13 = Nodo(2)
+nodo14 = Nodo(2)
+nodo15 = Nodo(2)
+nodo16 = Nodo(2)
+
+nodo10.siguiente = nodo11
+nodo11.siguiente = nodo12
+nodo12.siguiente = nodo13
+nodo13.siguiente = nodo14
+nodo14.siguiente = nodo15
+nodo15.siguiente = nodo16
+
+
+a = int(input("ingrese el nodo a buscar: "))
+print(f"El número {a} aparece {contar_apariciones(nodo1, a)} veces en la lista.")
