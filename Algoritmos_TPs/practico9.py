@@ -150,3 +150,44 @@ while actual:
     print(actual.dato, end=" ")
     actual = actual.siguiente
 print()
+
+
+#Ej 6
+
+def eliminar_vocales(cabeza):
+    vocales = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+    nueva_cabeza = None
+    nuevo_actual = None
+    actual = cabeza
+    while actual:
+        if actual.dato not in vocales:
+            nuevo_nodo = Nodo(actual.dato)
+            if nueva_cabeza is None:
+                nueva_cabeza = nuevo_nodo
+                nuevo_actual = nueva_cabeza
+            else:
+                nuevo_actual.siguiente = nuevo_nodo
+                nuevo_actual = nuevo_actual.siguiente
+        actual = actual.siguiente
+    return nueva_cabeza
+
+nodo_a = Nodo('a')
+nodo_b = Nodo('b')
+nodo_c = Nodo('e')
+nodo_d = Nodo('d')
+nodo_e = Nodo('i')
+nodo_f = Nodo('x')
+
+nodo_a.siguiente = nodo_b
+nodo_b.siguiente = nodo_c
+nodo_c.siguiente = nodo_d
+nodo_d.siguiente = nodo_e
+nodo_e.siguiente = nodo_f
+
+sin_vocales = eliminar_vocales(nodo_a)
+print("Lista sin vocales:")
+actual = sin_vocales
+while actual:
+    print(actual.dato, end=" ")
+    actual = actual.siguiente
+print()
