@@ -97,3 +97,56 @@ while actual:
     print(actual.dato, end=" ")
     actual = actual.siguiente
 print()
+
+
+# Ej 5
+
+def dividir_lista_positivos_negativos(cabeza):
+    cabeza_positivos = None
+    actual_positivos = None
+    cabeza_negativos = None
+    actual_negativos = None
+    actual = cabeza
+    while actual:
+        nuevo_nodo = Nodo(actual.dato)
+        if actual.dato >= 0:
+            if cabeza_positivos is None:
+                cabeza_positivos = nuevo_nodo
+                actual_positivos = cabeza_positivos
+            else:
+                actual_positivos.siguiente = nuevo_nodo
+                actual_positivos = actual_positivos.siguiente
+        else:
+            if cabeza_negativos is None:
+                cabeza_negativos = nuevo_nodo
+                actual_negativos = cabeza_negativos
+            else:
+                actual_negativos.siguiente = nuevo_nodo
+                actual_negativos = actual_negativos.siguiente
+        actual = actual.siguiente
+    return cabeza_positivos, cabeza_negativos
+
+nodo6 = Nodo(-1)
+nodo7 = Nodo(-2)
+nodo8 = Nodo(-3)
+nodo9 = Nodo(-4)
+
+nodo5.siguiente = nodo6
+nodo6.siguiente = nodo7
+nodo7.siguiente = nodo8
+nodo8.siguiente = nodo9
+
+positivos, negativos = dividir_lista_positivos_negativos(nodo1)
+print("Lista de números positivos:")
+actual = positivos
+while actual:
+    print(actual.dato, end=" ")
+    actual = actual.siguiente
+print()
+
+print("Lista de números negativos:")
+actual = negativos
+while actual:
+    print(actual.dato, end=" ")
+    actual = actual.siguiente
+print()
