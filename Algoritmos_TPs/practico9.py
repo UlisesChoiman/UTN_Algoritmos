@@ -44,3 +44,28 @@ if pos != -1:
 else:
     print(f"El nodo con valor {nodox} no se encuentra en la lista.")
 
+# Ej 3
+
+def eliminar_penultimo(cabeza):
+    if cabeza is None or cabeza.siguiente is None:
+        return cabeza  # No hay penúltimo nodo
+
+    anterior = None
+    actual = cabeza
+    while actual.siguiente and actual.siguiente.siguiente:
+        anterior = actual
+        actual = actual.siguiente
+
+    if anterior is None:
+        cabeza = cabeza.siguiente
+    else:
+        anterior.siguiente = actual.siguiente
+    return cabeza
+
+nodo1 = eliminar_penultimo(nodo1)
+actual = nodo1
+print("Lista después de eliminar el penúltimo nodo:")
+while actual:
+    print(actual.dato, end=" ")
+    actual = actual.siguiente
+print()
