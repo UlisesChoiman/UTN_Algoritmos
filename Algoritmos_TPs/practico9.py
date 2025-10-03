@@ -219,6 +219,6 @@ nodo13.siguiente = nodo14
 nodo14.siguiente = nodo15
 nodo15.siguiente = nodo16
 
-
+# Para contar correctamente en la lista que contiene todos los "2", debes pasar nodo10 como cabeza.
 a = int(input("ingrese el nodo a buscar: "))
-print(f"El número {a} aparece {contar_apariciones(nodo1, a)} veces en la lista.")
+print(f"El número {a} aparece {contar_apariciones(nodo10, a)} veces en la lista.")
