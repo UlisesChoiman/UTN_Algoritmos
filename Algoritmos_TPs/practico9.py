@@ -17,9 +17,11 @@ nodo1 = Nodo(1)
 nodo2 = Nodo(2)
 nodo3 = Nodo(3)
 nodo4 = Nodo(4)
+nodo5 = Nodo(5)
 nodo1.siguiente = nodo2
 nodo2.siguiente = nodo3
 nodo3.siguiente = nodo4
+nodo4.siguiente = nodo5
 
 print("Cantidad de nodos:", contar_nodos(nodo1)) 
 
@@ -65,6 +67,32 @@ def eliminar_penultimo(cabeza):
 nodo1 = eliminar_penultimo(nodo1)
 actual = nodo1
 print("Lista después de eliminar el penúltimo nodo:")
+while actual:
+    print(actual.dato, end=" ")
+    actual = actual.siguiente
+print()
+
+
+# Ej 4
+def filtrar_impares(cabeza):
+    nueva_cabeza = None
+    nuevo_actual = None
+    actual = cabeza
+    while actual:
+        if actual.dato % 2 != 0:
+            nuevo_nodo = Nodo(actual.dato)
+            if nueva_cabeza is None:
+                nueva_cabeza = nuevo_nodo
+                nuevo_actual = nueva_cabeza
+            else:
+                nuevo_actual.siguiente = nuevo_nodo
+                nuevo_actual = nuevo_actual.siguiente
+        actual = actual.siguiente
+    return nueva_cabeza
+
+impares = filtrar_impares(nodo1)
+print("Lista de nodos impares:")
+actual = impares
 while actual:
     print(actual.dato, end=" ")
     actual = actual.siguiente
