@@ -173,3 +173,17 @@ selection_sort(array_selection)
 
 print("\nArray ordenado (insertion sort):", array_insertion)
 print("Array ordenado (selection sort):", array_selection)
+
+
+#9
+
+import numpy as np
+
+A = np.random.randint(0, 100, size=(2, 3)) #4, 6
+print("Matriz original A:")
+print(A)
+
+# Ordenar cada fila
+O = np.sort(A, axis=1)
+print("\nMatriz ordenada por filas O:")
+print(O)
