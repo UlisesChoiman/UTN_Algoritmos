@@ -1,3 +1,5 @@
+import random
+
 #1
 
 def insertion_sort(arr):
@@ -64,3 +66,23 @@ print("Ordenado por selección:", numbers_selection)
 
 bubble_sort(numbers_bubble)
 print("Ordenado por burbuja:", numbers_bubble)
+
+
+#4
+
+with open('nros1.txt', 'w') as f:
+    for _ in range(50):
+        f.write(f"{random.randint(1, 1000)}\n")
+
+
+numbers = []
+with open('nros1.txt', 'r') as f:
+    for line in f:
+        numbers.append(int(line.strip()))
+
+insertion_sort(numbers)
+
+# Escribir números ordenados en nuevo archivo
+with open('ordenado.txt', 'w') as f:
+    for num in numbers:
+        f.write(f"{num}\n")
