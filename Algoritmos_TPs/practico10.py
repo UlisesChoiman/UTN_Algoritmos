@@ -178,6 +178,7 @@ print("Array ordenado (selection sort):", array_selection)
 #9
 
 import numpy as np
+import time
 
 A = np.random.randint(0, 100, size=(2, 3)) #4, 6
 print("Matriz original A:")
@@ -258,3 +259,32 @@ nombres_ordenados = sorted(nombres, key=lambda s: len(s))
 print("\nNombres ordenados por longitud:")
 for n in nombres_ordenados:
     print(n)
+
+#13
+
+def measure_sort_time(sort_func, arr):
+    arr_copy = arr.copy()
+    start_time = time.time()
+    sort_func(arr_copy)
+    end_time = time.time()
+    return end_time - start_time
+
+# Test with small list (10 numbers)
+small_list = [random.randint(1, 1000) for _ in range(10)]
+print("\nTesting with 10 numbers:")
+print("Insertion sort time:", measure_sort_time(insertion_sort, small_list))
+print("Selection sort time:", measure_sort_time(selection_sort, small_list))
+print("Bubble sort time:", measure_sort_time(bubble_sort, small_list))
+
+# Test with large list (6 million numbers)
+large_list = [random.randint(1, 1000000) for _ in range(6000000)]
+print("\nTesting with 6 million numbers:")
+print("Insertion sort time:", measure_sort_time(insertion_sort, large_list))
+print("Selection sort time:", measure_sort_time(selection_sort, large_list))
+print("Bubble sort time:", measure_sort_time(bubble_sort, large_list))
+
+# Compare with Python's built-in sort
+start_time = time.time()
+sorted(large_list)
+end_time = time.time()
+print("Python's built-in sort time:", end_time - start_time)
