@@ -243,3 +243,18 @@ insertion_sort(notas_ordenadas)
 
 print(f"\nPeor nota: {notas_ordenadas[0]}")
 print(f"Mejor nota: {notas_ordenadas[-1]}")
+
+
+#12
+
+nombres = []
+for i in range(10):
+    nombre = input(f"Ingrese el nombre {i+1}: ").strip()
+    nombres.append(nombre)
+
+print("\nNombres originales:", nombres)
+
+nombres_ordenados = sorted(nombres, key=lambda s: len(s))
+print("\nNombres ordenados por longitud:")
+for n in nombres_ordenados:
+    print(n)
