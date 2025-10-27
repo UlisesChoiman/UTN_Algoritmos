@@ -1,4 +1,5 @@
 import random
+import array
 
 #1
 
@@ -70,19 +71,37 @@ print("Ordenado por burbuja:", numbers_bubble)
 
 #4
 
-with open('nros1.txt', 'w') as f:
-    for _ in range(50):
-        f.write(f"{random.randint(1, 1000)}\n")
+# with open('nros.txt', 'w') as f:
+    #for _ in range(50):
+        #f.write(f"{random.randint(1, 1000)}\n")
 
 
-numbers = []
-with open('nros1.txt', 'r') as f:
-    for line in f:
-        numbers.append(int(line.strip()))
+#numbers = []
+#with open('nros1.txt', 'r') as f:
+    #for line in f:
+        #numbers.append(int(line.strip()))
 
-insertion_sort(numbers)
+#insertion_sort(numbers)
 
 # Escribir números ordenados en nuevo archivo
-with open('ordenado.txt', 'w') as f:
-    for num in numbers:
-        f.write(f"{num}\n")
+#with open('ordenado.txt', 'w') as f:
+    #for num in numbers:
+        #f.write(f"{num}\n")
+
+
+#5
+def insertion_sort_array(arr):
+    n = len(arr)
+    sorted_arr = array.array(arr.typecode, arr)
+    for i in range(1, n):
+        key = sorted_arr[i]
+        j = i - 1
+        while j >= 0 and sorted_arr[j] > key:
+            sorted_arr[j + 1] = sorted_arr[j]
+            j -= 1
+        sorted_arr[j + 1] = key
+    return sorted_arr
+
+numbers_array = array.array('i', [76, 21, 34, 68, 31, 27, 53])
+sorted_array = insertion_sort_array(numbers_array)
+print("Array ordenado:", sorted_array)
