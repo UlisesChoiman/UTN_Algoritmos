@@ -187,3 +187,38 @@ print(A)
 O = np.sort(A, axis=1)
 print("\nMatriz ordenada por filas O:")
 print(O)
+
+
+#10
+
+
+with open('pacientes.txt', 'r', encoding='utf-8') as archivo:
+    lineas = archivo.readlines()
+
+
+pacientes = []
+for linea in lineas:
+    linea = linea.strip() 
+    if linea: 
+        datos = [dato.strip() for dato in linea.split(',')]
+        # Convertir edad a entero para ordenar correctamente
+        datos[2] = int(datos[2])
+        pacientes.append(datos)
+
+
+pacientes_ordenados = sorted(pacientes, key=lambda x: x[2])
+
+
+print("Pacientes ordenados por edad:")
+print("-" * 50)
+for paciente in pacientes_ordenados:
+    print(f"{paciente[0]}, {paciente[1]}, {paciente[2]}, {paciente[3]}")
+
+# Guardar en nuevo archivo
+with open('pacientes_por_edad.txt', 'w', encoding='utf-8') as archivo_salida:
+    for paciente in pacientes_ordenados:
+        # Convertir edad de nuevo a string para guardar
+        linea = f"{paciente[0]}, {paciente[1]}, {paciente[2]}, {paciente[3]}\n"
+        archivo_salida.write(linea)
+
+print("\nDatos guardados en 'pacientes_por_edad.txt'")
