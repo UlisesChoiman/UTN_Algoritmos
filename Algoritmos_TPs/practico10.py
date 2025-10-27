@@ -124,3 +124,28 @@ print("Ordenado por selección:", numbers_sel)
 
 bubble_sort(numbers_bub)
 print("Ordenado por burbuja:", numbers_bub)
+
+
+#7
+
+precios = []
+for i in range(10):
+    while True:
+        try:
+            entrada = input(f"Ingrese el precio de la golosina {i+1}: ").strip()
+            precio = float(entrada.replace(',', '.'))
+            precios.append(precio)
+            break
+        except ValueError:
+            print("Entrada inválida. Ingrese un número válido (por ejemplo 12.50).")
+
+print("\nPrecios ingresados:", precios)
+
+precios_insertion = precios.copy()
+precios_selection = precios.copy()
+
+insertion_sort(precios_insertion)
+selection_sort(precios_selection)
+
+print("\nOrdenado de menor a mayor (insertion sort):", precios_insertion)
+print("Ordenado de menor a mayor (selection sort):", precios_selection)
