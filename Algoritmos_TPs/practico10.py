@@ -105,3 +105,22 @@ def insertion_sort_array(arr):
 numbers_array = array.array('i', [76, 21, 34, 68, 31, 27, 53])
 sorted_array = insertion_sort_array(numbers_array)
 print("Array ordenado:", sorted_array)
+
+
+#6
+
+random_numbers = [random.randint(1, 100) for _ in range(10)]
+print("\nArreglo original:", random_numbers)
+
+numbers_ins = random_numbers.copy()
+numbers_sel = random_numbers.copy()
+numbers_bub = random_numbers.copy()
+
+insertion_sort(numbers_ins)
+print("Ordenado por inserción:", numbers_ins)
+
+selection_sort(numbers_sel)
+print("Ordenado por selección:", numbers_sel)
+
+bubble_sort(numbers_bub)
+print("Ordenado por burbuja:", numbers_bub)
