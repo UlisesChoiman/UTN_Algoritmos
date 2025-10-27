@@ -149,3 +149,27 @@ selection_sort(precios_selection)
 
 print("\nOrdenado de menor a mayor (insertion sort):", precios_insertion)
 print("Ordenado de menor a mayor (selection sort):", precios_selection)
+
+
+#8
+
+random_list = [random.randint(1, 100) for _ in range(6)]
+random_array = array.array('i', [random.randint(1, 100) for _ in range(6)])
+
+print("\nLista original:", random_list)
+print("Array original:", random_array)
+
+list_insertion = random_list.copy()
+list_bubble = random_list.copy()
+insertion_sort(list_insertion)
+bubble_sort(list_bubble)
+
+print("\nLista ordenada (insertion sort):", list_insertion)
+print("Lista ordenada (bubble sort):", list_bubble)
+
+array_insertion = insertion_sort_array(random_array)
+array_selection = array.array('i', random_array)
+selection_sort(array_selection)
+
+print("\nArray ordenado (insertion sort):", array_insertion)
+print("Array ordenado (selection sort):", array_selection)
