@@ -191,7 +191,6 @@ print(O)
 
 #10
 
-
 with open('pacientes.txt', 'r', encoding='utf-8') as archivo:
     lineas = archivo.readlines()
 
@@ -222,3 +221,25 @@ with open('pacientes_por_edad.txt', 'w', encoding='utf-8') as archivo_salida:
         archivo_salida.write(linea)
 
 print("\nDatos guardados en 'pacientes_por_edad.txt'")
+
+
+#11
+
+notas = []
+for i in range(10):
+    while True:
+        try:
+            nota = float(input(f"Ingrese la nota del alumno {i+1}: "))
+            if 0 <= nota <= 10:
+                notas.append(nota)
+                break
+            else:
+                print("La nota debe estar entre 0 y 10")
+        except ValueError:
+            print("Por favor ingrese un número válido")
+
+notas_ordenadas = notas.copy()
+insertion_sort(notas_ordenadas)
+
+print(f"\nPeor nota: {notas_ordenadas[0]}")
+print(f"Mejor nota: {notas_ordenadas[-1]}")
