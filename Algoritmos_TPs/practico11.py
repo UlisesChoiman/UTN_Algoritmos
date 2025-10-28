@@ -26,3 +26,26 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+#2
+
+def buscar_alumno(lista_alumnos, alumno_buscado):
+    return alumno_buscado in lista_alumnos
+
+def main_alumnos():
+    alumnos = ["Juan", "Maria", "Pedro", "Ana", "Luis"]
+    print("Lista de alumnos que rindieron:", alumnos)
+
+    try:
+        nombre = input("Ingrese el nombre del alumno a buscar: ").strip().capitalize()
+        if buscar_alumno(alumnos, nombre):
+            print(f"{nombre} sí se presentó a rendir el examen.")
+        else:
+            print(f"{nombre} NO se presentó a rendir el examen.")
+    except KeyboardInterrupt:
+        print("\nBúsqueda cancelada.")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main_alumnos()
