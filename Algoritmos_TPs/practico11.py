@@ -49,3 +49,42 @@ def main_alumnos():
 
 if __name__ == "__main__":
     main_alumnos()
+
+
+#3
+
+def buscar_ocurrencias(lista, valor):
+    posiciones = [i + 1 for i, v in enumerate(lista) if v == valor]
+    return posiciones if posiciones else [1]
+
+def main():
+    lista = generar_lista()
+    print("Lista generada:", lista)
+
+    try:
+        entrada = input("Ingrese un número entero para buscar: ").strip()
+        numero = int(entrada)
+    except ValueError:
+        print("Entrada no válida. Debe ingresar un número entero.")
+        sys.exit(1)
+
+    posiciones = buscar_ocurrencias(lista, numero)
+    if posiciones == [1]:
+        print(f"El número {numero} NO se encuentra en la lista.")
+    else:
+        print(f"El número {numero} se encuentra en la lista en la(s) posición(es): {', '.join(map(str, posiciones))}")
+
+def main_alumnos():
+    alumnos = ["Juan", "Maria", "Pedro", "Ana", "Luis"]
+    print("Lista de alumnos que rindieron:", alumnos)
+
+    try:
+        nombre = input("Ingrese el nombre del alumno a buscar: ").strip().capitalize()
+        posiciones = buscar_ocurrencias(alumnos, nombre)
+        if posiciones == [1]:
+            print(f"{nombre} NO se presentó a rendir el examen.")
+        else:
+            print(f"{nombre} sí se presentó a rendir el examen.")
+    except KeyboardInterrupt:
+        print("\nBúsqueda cancelada.")
+        sys.exit(1)
