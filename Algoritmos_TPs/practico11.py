@@ -88,3 +88,65 @@ def main_alumnos():
     except KeyboardInterrupt:
         print("\nBúsqueda cancelada.")
         sys.exit(1)
+
+    
+    #4
+
+    def jugar_adivinar_numero():
+
+        # Pedir intervalo válido a < b
+        while True:
+            try:
+                entrada = input("Ingrese dos enteros a y b separados por espacio (a < b) o 'salir' para terminar: ").strip()
+                if entrada.lower() == "salir":
+                    print("Salida solicitada.")
+                    return
+                partes = entrada.split()
+                if len(partes) != 2:
+                    print("Debe ingresar exactamente dos valores.")
+                    continue
+                a = int(partes[0])
+                b = int(partes[1])
+                if a >= b:
+                    print("Debe cumplirse a < b.")
+                    continue
+                break
+            except ValueError:
+                print("Entrada inválida. Ingrese dos enteros.")
+            except KeyboardInterrupt:
+                print("\nInterrumpido por el usuario.")
+                return
+
+        # Prepararse para jugar
+        listo = input(f"Piense un número en el intervalo [{a}, {b}] y presione Enter cuando esté listo (o escriba 'salir'): ").strip()
+        if listo.lower() == "salir":
+            print("Salida solicitada.")
+            return
+
+        bajo, alto = a, b
+        while bajo <= alto:
+            intento = (bajo + alto) // 2
+            try:
+                resp = input(f"¿Su número es {intento}? Responda 'mayor', 'menor', 'igual' o 'salir': ").strip().lower()
+            except KeyboardInterrupt:
+                print("\nInterrumpido por el usuario.")
+                return
+
+            if resp == "salir":
+                print("Salida solicitada.")
+                return
+            if resp not in {"mayor", "menor", "igual"}:
+                print("Respuesta inválida. Use exactamente 'mayor', 'menor', 'igual' o 'salir'.")
+                continue
+
+            if resp == "igual":
+                print(f"¡La computadora adivinó su número: {intento}!")
+                return
+            elif resp == "mayor":
+                bajo = intento + 1
+            else:  # "menor"
+                alto = intento - 1
+
+            if bajo > alto:
+                print("Las respuestas dadas son contradictorias: no hay números posibles en el intervalo. Fin del juego.")
+                return
