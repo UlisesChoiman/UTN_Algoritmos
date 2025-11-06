@@ -117,7 +117,7 @@ def main_alumnos():
                 print("\nInterrumpido por el usuario.")
                 return
 
-        # Prepararse para jugar
+        # Jugar
         listo = input(f"Piense un número en el intervalo [{a}, {b}] y presione Enter cuando esté listo (o escriba 'salir'): ").strip()
         if listo.lower() == "salir":
             print("Salida solicitada.")
